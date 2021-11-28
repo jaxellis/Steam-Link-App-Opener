@@ -15,17 +15,17 @@
 
 class LinkCollector {
 	constructor(domains) {
-		this.regex = this.createRegex(domains);
+		this.regex = this.#createRegex(domains);
 	}
 
 	getLinks() {
 		return [...document.querySelectorAll('a[href]')].filter(
-			this.isDomain,
+			this.#isDomain,
 			this
 		);
 	}
 
-	createRegex(domains) {
+	#createRegex(domains) {
 		let filterRegex = '';
 		for (let domain of domains) {
 			filterRegex += `${domain.replaceAll('.', '\\.')}\/.\\w*|`;
@@ -33,7 +33,7 @@ class LinkCollector {
 		return new RegExp(filterRegex.replace(/\|([^\|]*)$/, '$1'));
 	}
 
-	isDomain(link) {
+	#isDomain(link) {
 		return link.href.match(this.regex);
 	}
 }
