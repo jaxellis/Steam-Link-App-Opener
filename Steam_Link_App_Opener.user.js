@@ -4,6 +4,7 @@
 // @version      1.0.0
 // @description  Opens Steam Links in the Steam Application
 // @author       Jaxellis
+// @icon         https://store.steampowered.com/favicon.ico
 // @homepage     https://github.com/jaxellis/Steam-Link-App-Opener
 // @supportURL   https://github.com/jaxellis/Steam-Link-App-Opener/issues/
 // @updateURL    https://github.com/jaxellis/Steam-Link-App-Opener/raw/main/Steam_Link_App_Opener.user.js
