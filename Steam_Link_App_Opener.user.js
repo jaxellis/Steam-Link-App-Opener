@@ -12,6 +12,7 @@
 // @include      http://*
 // @include      https://*
 // @grant        none
+// @license      GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
 // ==/UserScript==
 
 class LinkCollector {
