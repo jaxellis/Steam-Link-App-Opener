@@ -1,18 +1,23 @@
 // ==UserScript==
-// @name         Steam Link App Opener
-// @namespace    https://github.com/jaxellis
-// @version      1.0.0
-// @description  Opens Steam Links in the Steam Application
-// @author       Jaxellis
-// @icon         https://store.steampowered.com/favicon.ico
-// @homepage     https://github.com/jaxellis/Steam-Link-App-Opener
-// @supportURL   https://github.com/jaxellis/Steam-Link-App-Opener/issues/
-// @updateURL    https://github.com/jaxellis/Steam-Link-App-Opener/raw/main/Steam_Link_App_Opener.user.js
-// @downloadURL  https://github.com/jaxellis/Steam-Link-App-Opener/raw/main/Steam_Link_App_Opener.user.js
-// @include      http://*
-// @include      https://*
-// @grant        none
-// @license      GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
+// @name		Steam Link App Opener
+// @namespace	https://github.com/jaxellis
+// @version		1.0.0
+// @description	Opens Steam Links in the Steam Application
+// @author		Jaxellis
+// @icon		https://store.steampowered.com/favicon.ico
+// @homepage	https://github.com/jaxellis/Steam-Link-App-Opener
+// @supportURL	https://github.com/jaxellis/Steam-Link-App-Opener/issues/
+// @updateURL	https://github.com/jaxellis/Steam-Link-App-Opener/raw/main/Steam_Link_App_Opener.user.js
+// @downloadURL	https://github.com/jaxellis/Steam-Link-App-Opener/raw/main/Steam_Link_App_Opener.user.js
+// @match		http://*/*
+// @match		https://*/*
+// @exclude		http://store.steampowered.com/*
+// @exclude		https://store.steampowered.com/*
+// @exclude		http://steamcommunity.com/*
+// @exclude		https://steamcommunity.com/*
+// @grant		none
+// @run-at      document-start
+// @license		GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
 // ==/UserScript==
 
 class LinkCollector {
