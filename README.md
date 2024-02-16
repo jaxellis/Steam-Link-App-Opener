@@ -5,7 +5,7 @@
 
 # Steam Link App Opener
 
-Turns Steam links found on the webpage into links openable by your Steam application.
+Open's Steam link's in your installed Steam application. Customizable hoytkey to enable navigating to the Steam website instead. 
 <br/><br/>
 ## Prerequisites
 
@@ -23,15 +23,27 @@ Turns Steam links found on the webpage into links openable by your Steam applica
 	<tbody>
 		<tr>
 			<td>
-				<a href="https://github.com/jaxellis/Steam-Link-App-Opener/raw/main/Steam_Link_App_Opener.user.js"><img src="https://github.com/fluidicon.png" style="width: 16px; height: 16px;"/> Github</a>
+				<a href="https://github.com/jaxellis/Steam-Link-App-Opener/raw/main/Steam_Link_App_Opener.user.js">
+					<img src="https://www.google.com/s2/favicons?domain=github.com"/>
+ Github</a>
 			</td>
 		</tr>
 		<tr>
 			<td>
-				<a href="https://greasyfork.org/en/scripts/436231-steam-link-app-opener"><img src="https://greasyfork.org/packs/media/images/blacklogo16-5421a97c75656cecbe2befcec0778a96.png" style="width: 16px; height: 16px;"/> GreasyFork</a>
+				<a href="https://greasyfork.org/en/scripts/436231-steam-link-app-opener">
+					<img src="https://www.google.com/s2/favicons?domain=greasyfork.org/"/>
+ GreasyFork</a>
 			</td>
 		</tr>
-        <tr></tr>
+		<tr></tr>
 	</tbody>
 </table>
 <!--/pages-->
+
+## Configuration
+
+Inside the script you will find two options to customize.
+
+First is the `USECUSTOMKEY` variable. Setting this to false will disable the hotkey functionality at the cost of not being able to open Steam links in the browser and only in the Steam application.
+
+Second is the `CUSTOMKEY` variable. Changing this will allow you to customize which key you want to use to enable opening the Steam link in your browser. You can find the key strings to use here [Keyboard Event Values](https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values).
