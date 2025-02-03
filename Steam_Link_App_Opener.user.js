@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name		Steam Link App Opener
 // @namespace	https://github.com/jaxellis
-// @version		2.0.0
+// @version		2.1.0
 // @description	Opens Steam Links in the Steam Application
 // @author		Jaxellis
 // @icon		https://store.steampowered.com/favicon.ico
@@ -20,50 +20,39 @@
 // @license		GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
 // ==/UserScript==
 
-/*
-List of values you can use for Custom Key.
-https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
-*/
-
 /* Global Variables and Constants */
-const USECUSTOMKEY = true; // Set to false to disable custom key
-const CUSTOMKEY = 'Control'; // Default key is 'Control'
-const PREFIX = 'steam://openurl/'; // Default steam://openurl/
-const STEAM_URLS = ['store.steampowered.com', 'steamcommunity.com']; // List of Steam domains to update
-var customKeyPressed = false; // Variable to tell if our custom key is being pressed
+const CUSTOMKEY = 'Control'; // Valid Keys: https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
+const PREFIX = 'steam://openurl/'; // Default: steam://openurl/
+const STEAM_URLS = ['store.steampowered.com', 'steamcommunity.com']; // List of Steam domains to open in app
+let customKeyPressed = false; // Variable to tell if our custom key is being pressed
 
 // This event listener is delegated to the document to find all steam links
 document.addEventListener('click', (event) => {
+
+	// Allow native browser behavior for clicks with modifiers (e.g., Ctrl+Click to open in new tab)
+	if (event.ctrlKey || event.shiftKey || event.altKey || event.metaKey) return;
+
 	// Find the closest link that matches any of the specified steam URLs
-	const link = event.target.closest(
-		STEAM_URLS.map((domain) => `a[href*="${domain}"]`).join(', ')
-	);
-	// If no link is found, return early
-	if (!link) {
-		return;
-	}
+	const link = event.target.closest('a[href]');
+	if (!link || !STEAM_URLS.includes(new URL(link.href).hostname)) return;
+
 	// Prevent the default link behavior
 	event.preventDefault();
+
 	// If a custom key is pressed, open the default link
-	if (customKeyPressed) {
-		window.open(link.href);
-		customKeyPressed = false;
-		return;
-	}
-	// Otherwise, open the link with a specified prefix
-	window.open(`${PREFIX}${link.href}`);
+	const url = customKeyPressed ? link.href : `${PREFIX}${encodeURI(link.href)}`;
+	window.open(url, '_blank');
+
+	// Reset custom key state
+	customKeyPressed = false;
 });
 
 /* Update Custom Key Variable */
-if (USECUSTOMKEY) {
+if (CUSTOMKEY) {
 	// Add event listener to the document for keydown events
 	document.addEventListener('keydown', (event) => {
 		// Check if the pressed key is the custom key
-		if (event.key === CUSTOMKEY) {
-			// Check if the custom key is already pressed
-			if (customKeyPressed) {
-				return; // Exit the function if variable set to true already
-			}
+		if (event.key === CUSTOMKEY && !customKeyPressed) {
 			customKeyPressed = true; // Set the custom key as pressed
 		}
 	});
