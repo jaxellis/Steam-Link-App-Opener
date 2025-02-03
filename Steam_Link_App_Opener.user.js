@@ -20,21 +20,20 @@
 // @license		GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
 // ==/UserScript==
 
-/* Global Variables and Constants */
-
 /*
-List of values you can use.
+List of values you can use for Custom Key.
 https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
 */
+
+/* Global Variables and Constants */
 const USECUSTOMKEY = true; // Set to false to disable custom key
 const CUSTOMKEY = 'Control'; // Default key is 'Control'
-
 const PREFIX = 'steam://openurl/'; // Default steam://openurl/
 const STEAM_URLS = ['store.steampowered.com', 'steamcommunity.com']; // List of Steam domains to update
 var customKeyPressed = false; // Variable to tell if our custom key is being pressed
 
-// This event listener is delegated to the document body to find all steam links
-document.body.addEventListener('click', (event) => {
+// This event listener is delegated to the document to find all steam links
+document.addEventListener('click', (event) => {
 	// Find the closest link that matches any of the specified steam URLs
 	const link = event.target.closest(
 		STEAM_URLS.map((domain) => `a[href*="${domain}"]`).join(', ')
@@ -57,8 +56,8 @@ document.body.addEventListener('click', (event) => {
 
 /* Update Custom Key Variable */
 if (USECUSTOMKEY) {
-	// Add event listener to the body for keydown events
-	document.body.addEventListener('keydown', (event) => {
+	// Add event listener to the document for keydown events
+	document.addEventListener('keydown', (event) => {
 		// Check if the pressed key is the custom key
 		if (event.key === CUSTOMKEY) {
 			// Check if the custom key is already pressed
@@ -69,8 +68,8 @@ if (USECUSTOMKEY) {
 		}
 	});
 
-	// Add event listener to the body for keyup event
-	document.body.addEventListener('keyup', (event) => {
+	// Add event listener to the document for keyup event
+	document.addEventListener('keyup', (event) => {
 		// Check if the key pressed is the custom key
 		if (event.key === CUSTOMKEY) {
 			customKeyPressed = false; // Set the custom key as not pressed
