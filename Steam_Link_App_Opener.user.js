@@ -19,6 +19,8 @@
 // @run-at      document-start
 // @license		GPL-3.0-or-later; https://www.gnu.org/licenses/gpl-3.0.txt
 // ==/UserScript==
+(() => {
+	'use strict';
 
 /* Global Variables and Constants */
 const CUSTOMKEY = 'Control'; // Valid Keys: https://developer.mozilla.org/en-US/docs/Web/API/UI_Events/Keyboard_event_key_values
@@ -65,3 +67,4 @@ if (CUSTOMKEY) {
 		}
 	});
 }
+})();
